@@ -1,2 +1,2 @@
 # web-school
-webschool excersices
+webschool exercises
