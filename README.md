@@ -1,2 +1,2 @@
 # web-school
-webschool exercises
+Repository for webschool college.
