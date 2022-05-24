@@ -16,26 +16,43 @@ const users = [
     }
 ]
 
+const usernameInput = document.getElementById("user-name");
+const passwordInput = document.getElementById("password");
+const main = document.querySelector("main");
+
 function signIn() {
-    const main = document.querySelector("main");
-
-    const usernameInput = document.getElementById("user-name");
-    const passwordInput = document.getElementById("password");
-
     const userNameValue = usernameInput.value.toLowerCase();
     const passwordValue = passwordInput.value.toLowerCase();
+    
+    usernameInput.style.border = "";
+    passwordInput.style.border = "";
+
+    if (!userNameValue) {
+        usernameInput.style.border = "1px solid red";
+        usernameInput.focus();
+        return;
+
+    } else if (!passwordValue) {
+        passwordInput.style.border = "1px solid red";
+        passwordInput.focus();
+        return;
+    }
+
+    var userFirstName = "";
 
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
 
         if (user.userName === userNameValue && user.password === passwordValue) {
-            main.innerHTML = `<h1>Welcome ${user.firstName}</h1>`;
+            userFirstName = user.firstName;
             break;
         }
-        else if (i === users.length - 1) {
-            usernameInput.value = "";
-            passwordInput.value = "";
-            alert("Invalid credentials try again.");
-        }
+    }
+
+    if (userFirstName) {
+        main.innerHTML = `<h1>Welcome ${userFirstName}</h1>`;
+
+    } else {
+        alert("Invalid credentials try again.");
     }
 }
