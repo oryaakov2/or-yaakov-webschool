@@ -8,27 +8,23 @@
     font-size: 15px;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;   
-}
-
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #fafafa;
 }
 
-article h3 {
-    margin: 10px auto;
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
 }
 
 button {
     position: relative;
-    font-size: 1rem;
+    font-size: 100%;
     padding: 15px;
-    margin: 20px;
+    margin: 10px;
     background-color: #fff;
     border: none;
     border-radius: 10px;
@@ -36,6 +32,7 @@ button {
     color: #000;
     font-weight: 600;
     box-shadow: 0px 0px 5px 0px #d7d7d7;
+    max-width: max-content;
 }
 
 button:hover {
@@ -47,10 +44,65 @@ button:active {
     top: 1px;
 }
 
+input,
+textarea {
+    font-size: 1rem;
+    padding: 15px;
+    margin: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    transition: box-shadow 0.2s ease-in-out;
+    color: #000;
+    box-shadow: 0px 0px 5px 0px #d7d7d7;
+    width: 100%;
+    resize: none;
+}
+
+input:hover,
+textarea:hover {
+    box-shadow: 0px 0px 7px 1px #d7d7d7;
+}
+
+input:focus {
+    outline: none;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+#form {
+    position: absolute;
+    top: 200px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 7px 1px #c0c0c0;
+    padding: 25px;
+    background-color: #fff;
+    animation: fade 0.3s;
+    width: 40vw;
+    max-height: max-content;
+    overflow: hidden;
+}
+
+.form-title h1 {
+    margin: 15px auto;
+    font-size: 2rem;
+    color: #000;
+    font-weight: 600;
+}
+
 .grid-template {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 1.2rem;
     margin: 15px auto;
     padding: 1.2rem;
 }
@@ -62,19 +114,15 @@ button:active {
     box-shadow: 0px 0px 5px 0px #d7d7d7;
     border-radius: 15px;
     transition: all 0.2s ease-out;
-    width: 400px;
-    height: 550px;
     background-color: #fff;
     overflow: hidden;
-}
-
-#card:hover {
-    box-shadow: 0px 0px 10px 3px #d7d7d7;
-    cursor: pointer;
+    height: 50vh;
+    width: 100%;
+    margin-right: 15px;
 }
 
 .card-title {
-    margin: 5px auto;
+    margin: 15px auto;
     font-size: 1.2rem;
 }
 
@@ -87,18 +135,58 @@ button:active {
     font-size: 1.1rem;
 }
 
+#card:hover {
+    box-shadow: 0px 0px 10px 3px #d7d7d7;
+}
+
 #category p {
     font-size: 1.1rem;
 }
 
-#price p {
+#card-footer {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    font-size: 1.2rem;
+    justify-content: space-between;
 }
 
 #card img {
     width: 100%;
-    height: 50%;
+    height: 40%;
+}
+
+.fa-solid {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: rgb(255, 79, 79);
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1350px) {
+    .grid-template {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media (max-width: 1020px) {
+    .grid-template {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 700px) {
+    .grid-template {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
 }

@@ -16,15 +16,28 @@
           crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Roboto:wght@300;400;500;700&display=swap"
           rel="stylesheet">
+      <script src="https://kit.fontawesome.com/061a95072e.js" crossorigin="anonymous"></script>
     <title>ecommerce</title>
 </head>
 
 <body>
     <main>
-        <div class="grid-template">
-            
-        </div>
-        <button onclick="getProducts()">Show Products</button>
+      <div class="btn-group">
+            <button id="toggle-btn" onclick="toggleForm()">Show Form</button>
+      </div>
+
+      <div class="grid-template"></div>
+      
+      <form id="form" action="">
+            <div class="form-title">
+                  <h1>Create New Product</h1>
+            </div>
+            <input id="title" name="title" type="text" placeholder="Title" required />
+            <input id="img" type="text" name="image" placeholder="Image URL - http://image.com" required />
+            <input id="category" name="category" type="text" placeholder="Category" required />
+            <input id="price" name="price" type="number" placeholder="0.00$" min="0" max="999" required />
+            <button id="form-btn" type="button">Create Product</button>
+      </form>
     </main>
 
     <script src="/js/main.js"></script>

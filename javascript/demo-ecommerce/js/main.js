@@ -1,21 +1,67 @@
-const div = document.querySelector("div");
+const gridDiv = document.querySelector(".grid-template");
+const form = document.querySelector("#form");
+const toggleBtn = document.getElementById("toggle-btn");
+
+var products = [];
+
+const FormElements = {
+    titleInput: document.getElementById("title"),
+    imageInput: document.getElementById("img"),
+    categoryInput: document.getElementById("category"),
+    priceInput: document.getElementById("price"),
+    button: document.getElementById("form-btn")
+}
+
+FormElements.button.addEventListener("click", function createProduct(e) {
+    e.preventDefault();
+
+    if (
+        FormElements.titleInput.value &&
+        FormElements.imageInput.value &&
+        FormElements.categoryInput.value &&
+        FormElements.priceInput.value
+    ) {
+        const product = {
+            id: new Date().getTime(),
+            title: FormElements.titleInput.value,
+            image: FormElements.imageInput.value,
+            category: FormElements.categoryInput.value,
+            price: parseInt(FormElements.priceInput.value) || 0
+        }
+
+        products.push(product);
+
+        appendElements(products);
+
+        toggleForm();
+
+    } else {
+        alert("please fill all fields.")
+    }
+})
+
+getProducts();
 
 async function getProducts() {
     const response = await fetch('https://fakestoreapi.com/products/category/electronics');
     const data = await response.json();
 
-    const products = [...data];
+    data.forEach(item => products.push(item));
 
+    appendElements(products);
+}
+
+function appendElements(productsArray) {
     var toAppend = "";
 
-    products.forEach(product => {
-        const { price, image, title, category } = product;
+    productsArray.forEach(product => {
+        const { id, title, image, price, category } = product;
 
         toAppend += `<article id="card">
                         <img src="${image}"
-                             alt="house">
+                             alt="gadget">
                         <div class="card-title">
-                            <h3>${title.slice(0, 10)}</h3>
+                            <h3>${title.slice(0, 20)}</h3>
                         </div>
                         <div class="card-body">
                             <p>
@@ -27,7 +73,8 @@ async function getProducts() {
                                     <strong>category:</strong> ${category}
                                 </p>
                             </div>
-                            <div id="price">
+                            <div id="card-footer">
+                                <i id=${id} class="fa-solid fa-trash-can" onclick="removeProduct(this)"></i>
                                 <p>
                                     <strong>${price.toFixed(2)}$</strong>
                                 </p>
@@ -36,5 +83,24 @@ async function getProducts() {
                     </article>`
     })
 
-    div.innerHTML = toAppend;
+    gridDiv.innerHTML = toAppend;
+}
+
+function removeProduct(e) {
+    const id = parseInt(e.getAttribute("id"));
+
+    products = products.filter(product => product.id !== id);
+
+    appendElements(products);
+}
+
+function toggleForm() {
+    if (form.style.display === "none") {
+        form.style.display = "flex"
+        toggleBtn.innerText = "Hide Form"
+    }
+    else {
+        form.style.display = "none"
+        toggleBtn.innerText = "Show Form"
+    }
 }
