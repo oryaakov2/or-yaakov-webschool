@@ -1,3 +1,13 @@
+class Product {
+    constructor(title, image, category, price) {
+        this.id = new Date().getTime(),
+            this.title = title,
+            this.image = image,
+            this.category = category,
+            this.price = price || 0
+    }
+}
+
 const gridDiv = document.querySelector(".grid-template");
 const form = document.querySelector("#form");
 const toggleBtn = document.getElementById("toggle-btn");
@@ -12,7 +22,7 @@ const FormElements = {
     button: document.getElementById("form-btn")
 }
 
-FormElements.button.addEventListener("click", function createProduct(e) {
+form.addEventListener("submit", function createProduct(e) {
     e.preventDefault();
 
     if (
@@ -21,13 +31,12 @@ FormElements.button.addEventListener("click", function createProduct(e) {
         FormElements.categoryInput.value &&
         FormElements.priceInput.value
     ) {
-        const product = {
-            id: new Date().getTime(),
-            title: FormElements.titleInput.value,
-            image: FormElements.imageInput.value,
-            category: FormElements.categoryInput.value,
-            price: parseInt(FormElements.priceInput.value) || 0
-        }
+        const product = new Product(
+            FormElements.titleInput.value,
+            FormElements.imageInput.value,
+            FormElements.categoryInput.value,
+            parseInt(FormElements.priceInput.value)
+        )
 
         products.push(product);
 
