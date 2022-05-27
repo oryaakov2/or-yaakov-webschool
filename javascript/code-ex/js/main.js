@@ -7,7 +7,7 @@ const button = document.getElementById("primary-btn")
 
 let code = "";
 let userSelect = "";
-var timeouts = [];
+let timeouts = [];
 let tries = 0;
 
 input.addEventListener("input", () => {
@@ -61,7 +61,6 @@ function showKeyboard() {
             <div id="zero" class="item">0</div>
         </div>`
 
-
     document.querySelectorAll(".item").forEach(item => {
         item.addEventListener("click", onPressNumber);
     });
@@ -90,8 +89,25 @@ function applySelect(element) {
     timeouts.push(timeout);
 }
 
+function check() {
+    tries++;
+    if (userSelect === code) {
+        alert("Success");
+        tries = 0;
+    }
+    else if (tries < 3) {
+        alert("Failed");
+    }
+    else {
+        alert("Calling the Police!");
+        document.querySelectorAll(".item").forEach(item => {
+            item.removeEventListener("click", onPressNumber);
+        });
+    }
+    clearAll();
+}
+
 function clearAll() {
-    userSelect = "";
     document.querySelectorAll(".item").forEach(item => {
         item.style.backgroundColor = "#fff";
     });
@@ -99,22 +115,5 @@ function clearAll() {
         clearTimeout(t);
     });
     timeouts.length = 0;
-}
-
-function check() {
-    tries++;
-    if (userSelect === code) {
-        alert(`Success ${userSelect} = ${code}`);
-    }
-    else if (tries < 3) {
-        alert("Failed");
-        clearAll();
-    }
-    else {
-        alert("Calling the Police!");
-        clearAll();
-        document.querySelectorAll(".item").forEach(item => {
-            item.removeEventListener("click", onPressNumber);
-        });
-    }
+    userSelect = "";
 }
