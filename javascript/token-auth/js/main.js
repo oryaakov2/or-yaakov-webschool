@@ -86,7 +86,7 @@ function generateToken() {
     return token;
 }
 
-// const users1 = [
+// const usersDB = [
 //     {
 //         fName: "Or",
 //         email: "or@gmail.com",
@@ -113,9 +113,9 @@ function generateToken() {
 //     }
 // ]
 
-// for (let i = 0; i < users1.length; i++) {
-//     const user = users1[i];
+// for (let i = 0; i < usersDB.length; i++) {
+//     const user = usersDB[i];
 //     user.token = generateToken();
 // }
 
-// localStorage.setItem("users", JSON.stringify(users1))
+// localStorage.setItem("users", JSON.stringify(usersDB))
