@@ -29,7 +29,7 @@
                         <a href="#skills">Skills</a>
                     </li>
                     <li>
-                        <a href="#education">Education</a>
+                        <a href="#projects">Projects</a>
                     </li>
                     <li>
                         <a href="#contact">Contact</a>
@@ -80,38 +80,56 @@
                     <h2>Skills</h2>
                 </div>
                 <div id="skills-container">
-                    <img style="width: 50%;" src="./assets/images/react.png" alt="react">
-                    <img style="width: 50%;" src="./assets/images/node.png" alt="nodejs">
-                    <img style="width: 50%;" src="./assets/images/java.png" alt="java">
-                    <img style="width: 50%;" src="./assets/images/html.png" alt="html">
-                    <img style="width: 50%;" src="./assets/images/css.png" alt="css">
-                    <img style="width: 50%;" src="./assets/images/js.png" alt="javascript">
+                    <img src="./assets/images/react.png" alt="react">
+                    <img src="./assets/images/node.png" alt="nodejs">
+                    <img src="./assets/images/java.png" alt="java">
+                    <img src="./assets/images/html.png" alt="html">
+                    <img src="./assets/images/css.png" alt="css">
+                    <img src="./assets/images/js.png" alt="javascript">
                 </div>
             </div>
         </section>
-        <section id="education">
+        <section id="projects">
             <div class="container">
                 <div class="title">
                     <h2>Projects</h2>
                 </div>
-                <div id="projects">
-                    <div>
-                        <h3>2022-2022 Web-School</h3>
+                <div class="projects-items">
+                    <div class="item">
+                        <div class="item-links">
+                            <a class="link" href="https://quick-quiz-game.netlify.app" target="_blank">Website</a>
+                            <a class="link" href="https://github.com/oryaakov2/quick-quiz" target="_blank">Repository</a>
+                        </div>
+                        <div class="item-image">
+                            <img src="./assets/projects-images/quick-quiz.png" alt="quick quiz">
+                        </div>
                     </div>
-                    <div>
-                        <p>Full Stack Web Development.</p>
+                    <div class="item">
+                        <div class="item-links">
+                            <a class="link" href="https://cocktail-db-oy.netlify.app" target="_blank">Website</a>
+                            <a class="link" href="https://github.com/oryaakov2/cocktails" target="_blank">Repository</a>
+                        </div>
+                        <div class="item-image">
+                            <img src="./assets/projects-images/cocktail-db.png" alt="cocktail db">
+                        </div>
                     </div>
-                    <div>
-                        <h3>2020-2021 John Bryce</h3>
+                    <div class="item">
+                        <div class="item-links">
+                            <a class="link" href="https://color-generator-oy.netlify.app" target="_blank">Website</a>
+                            <a class="link" href="https://github.com/oryaakov2/color-generator" target="_blank">Repository</a>
+                        </div>
+                        <div class="item-image">
+                            <img src="./assets/projects-images/color-generator.png" alt="color generator">
+                        </div>
                     </div>
-                    <div>
-                        <p>Full Stack Java Development.</p>
-                    </div>
-                    <div>
-                        <h3>2011-2014 Ort Colleges</h3>
-                    </div>
-                    <div>
-                        <p>High School Diploma.</p>
+                    <div class="item">
+                        <div class="item-links">
+                            <a class="link" href="https://stripe-submenus-2022.netlify.app/" target="_blank">Website</a>
+                            <a class="link" href="https://github.com/oryaakov2/stripe-submenus" target="_blank">Repository</a>
+                        </div>
+                        <div class="item-image">
+                            <img src="./assets/projects-images/stripe.png" alt="stripe">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -188,10 +206,12 @@
                 <i class="fa-brands fa-github"></i>
             </a>
         </div>
-        <p>Or Yaakov &copy; 2022</p>
+        <p id="date">Or Yaakov &copy;</p>
         <p>All Rights Reserved</p>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="./js/main.js"></script>
     <script>
         var typed = new Typed(".auto-input", {
             strings: ["Java Developer", "Web Developer"],
