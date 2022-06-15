@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.grid-container, .grid-second-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px;
+}
+
+.grid-container:hover {
+    background-color: rgb(186, 156, 255);
+}
+
+.grid-item {
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 20px;
+    width: 73px;
+    height: 65px;
+    overflow: hidden;
+}
+
+.grid-item:hover {
+    border: 1px solid rgb(142, 255, 114);
+}

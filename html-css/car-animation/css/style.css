@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+}
+
+#pedal {
+    position: absolute;
+    top: 150px;
+    left: 150px;
+    transition: all 1s ease-in;
+}
+
+#pedal:active {
+    transform: rotateX(50deg);
+}
+
+#pedal:active ~ #needle {
+    transform: rotateZ(380deg);
+}
+
+#techometer {
+    position: absolute;
+    right: 0;
+}
+
+#needle {
+    position: absolute;
+    right: 91px;
+    top: 85px;
+    transition: all 1s ease-in;
+    transform: rotateZ(232deg);
+    transform-origin: 50% 80%;
+}
