@@ -140,8 +140,8 @@ const nextLevel = () => {
 
 const changelocation = () => {
     const timeout = setTimeout(() => {
-        catchBtn.style.top = (Math.random() * 600).toString() + "px";
-        catchBtn.style.left = (Math.random() * 700).toString() + "px";
+        catchBtn.style.top = (Math.random() * 560).toString() + "px";
+        catchBtn.style.left = (Math.random() * 820).toString() + "px";
 
         clearTimeout(timeout);
     }, locationDelay)
