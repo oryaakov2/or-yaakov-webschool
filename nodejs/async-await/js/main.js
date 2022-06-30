@@ -4,34 +4,25 @@ window.onload = () => {
     p.style.color = "red";
 }
 
-function changeFontSize() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            p.style.fontSize += 50 + "px";
-            resolve();
-        }, 5000)
+async function changeFontSize() {
+    setTimeout(() => {
+        p.style.fontSize += 50 + "px";
     })
 }
 
-function changeFontStyle() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            p.style.fontStyle = "italic";
-            resolve();
-        }, 5000)
-    })
+async function changeFontStyle() {
+    setTimeout(() => {
+        p.style.fontStyle = "italic";
+    }, 5000)
 }
 
-function changeFontColor() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            p.style.color = "purple";
-            resolve();
-        }, 5000)
-    })
+async function changeFontColor() {
+    setTimeout(() => {
+        p.style.color = "purple";
+    }, 5000)
 }
 
-async function startAnimation()  {
+async function startAnimation() {
     await changeFontSize();
     await changeFontStyle();
     await changeFontColor();
