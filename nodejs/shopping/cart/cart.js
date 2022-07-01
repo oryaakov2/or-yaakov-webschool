@@ -1,0 +1,1 @@
+[{"id":1,"name":"bread","price":15},{"id":2,"name":"milk","price":10},{"id":3,"name":"glasses","price":50},{"id":4,"name":"hat","price":25}]
