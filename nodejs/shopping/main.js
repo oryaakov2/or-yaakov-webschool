@@ -5,15 +5,15 @@ const deleteAction = require("./api/delete");
 
 const args = process.argv.slice(2);
 
-const action = args[0].toLowerCase();
+const action = args[0] ? args[0].toLowerCase() : "";
 var product = args[1];
 
 if (action === "create" || action === "update" || action === "delete") {
-    if (!product) {
-        throw new Error(`required an product object for ${action} product`);
+    if (product) {
+        product = JSON.parse(product);
     }
     else {
-        product = JSON.parse(product);
+        throw new Error(`required product object for ${action} product`);
     }
 }
 
@@ -23,7 +23,8 @@ switch (action) {
         break;
 
     case "read":
-        readAction();
+        const fileDataObj = readAction.read();
+        console.log(fileDataObj);
         break;
 
     case "update":
@@ -32,6 +33,17 @@ switch (action) {
 
     case "delete":
         deleteAction(product);
+        break;
+
+    case "sum":
+        const sum = readAction.getSum();
+        console.log(sum);
+        break;
+
+    case "sort":
+        product = product ? JSON.parse(product) : {};
+        const sortedCart = readAction.sortCart(product);
+        console.log(sortedCart);
         break;
 
     default:

@@ -1,12 +1,19 @@
 const fs = require("fs");
+const readAction = require("./read");
+const checkProductExists  = require("../tools/validation");
 
 function createAction(product) {
-    const fileData = fs.readFileSync("./cart/cart.js", "utf-8");
-    const fileDataObj = JSON.parse(fileData);
+    const fileDataObj = readAction.read();
 
-    fileDataObj.push(product);
+    const productIndex = checkProductExists(product);
 
-    fs.writeFileSync("./cart/cart.js", JSON.stringify(fileDataObj));
+    if (productIndex < 0) {
+        fileDataObj.push(product);
+        fs.writeFileSync("./cart/cart.js", JSON.stringify(fileDataObj));
+    }
+    else {
+        throw new Error(`create failed: product with id ${product.id} already exists`);
+    }
 }
 
 module.exports = createAction;

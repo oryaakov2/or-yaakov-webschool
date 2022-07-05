@@ -1,21 +1,27 @@
 const fs = require("fs");
+const readAction = require("./read");
+const checkProductExists  = require("../tools/validation");
 
 function updateAction(updatedProduct) {
-    const fileData = fs.readFileSync("./cart/cart.js", "utf-8");
-    const fileDataObj = JSON.parse(fileData);
+    const fileDataObj = readAction.read();
 
-    const productIndex = fileDataObj.findIndex(product => {
-        return product.id === updatedProduct.id;
-    });
+    const productIndex = checkProductExists(updatedProduct);
 
     if (productIndex > -1) {
-        fileDataObj[productIndex] = updatedProduct;
+        const product = fileDataObj[productIndex];
+
+        for (const key in updatedProduct) {
+            if (updatedProduct[key]) {
+                const value = updatedProduct[key];
+                product[key] = value;
+            }
+        }
+
+        fs.writeFileSync("./cart/cart.js", JSON.stringify(fileDataObj));
     }
     else {
-        fileDataObj.push(updatedProduct);
+        throw new Error(`update failed: no such product with id ${updatedProduct.id}`);
     }
-
-    fs.writeFileSync("./cart/cart.js", JSON.stringify(fileDataObj));
 }
 
 module.exports = updateAction;
