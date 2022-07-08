@@ -1,5 +1,8 @@
 const fs = require("fs");
 const http = require("http");
+const getStudents = require("./crud/read");
+const deleteStudent = require("./crud/delete");
+
 const PORT = 3000;
 
 const server = http.createServer((req, res) => {
@@ -46,24 +49,13 @@ const server = http.createServer((req, res) => {
             break;
 
         case "/students":
-            const students = fs.readFileSync("./data/students.json");
+            const students = getStudents();
             res.end(students);
             break;
 
         case "/delete-student":
-            const studentsArray = fs.readFileSync("./data/students.json");
-            const studentsJson = JSON.parse(studentsArray);
-
-            const deletedStudent = studentsJson.shift();
-
-            if (deletedStudent) {
-                fs.writeFileSync("./data/students.json", JSON.stringify(studentsJson));
-                res.end(JSON.stringify(deletedStudent));
-            }
-            else {
-                res.end("");
-            }
-
+            const deletedStudent = deleteStudent();
+            res.end(deletedStudent);
             break;
 
         default:
