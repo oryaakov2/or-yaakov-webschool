@@ -1,5 +1,8 @@
 const fs = require("fs");
+const path = require("path");
 const getStudents = require("./read");
+
+const dataFile = path.join(__dirname + "/../data/students.json");
 
 function deleteStudent() {
     const students = getStudents();
@@ -8,12 +11,12 @@ function deleteStudent() {
     const deletedStudent = studentsJson.shift();
 
     if (deletedStudent) {
-        fs.writeFileSync("./data/students.json", JSON.stringify(studentsJson));
+        fs.writeFileSync(dataFile, JSON.stringify(studentsJson));
 
         return JSON.stringify(deletedStudent)
     }
     else {
-       return ""
+        return ""
     }
 }
 

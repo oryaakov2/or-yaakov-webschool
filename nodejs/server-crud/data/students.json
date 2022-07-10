@@ -1,1 +1,30 @@
-[{"id":2,"firstName":"Jose","lastName":"White","age":23,"GPA":85},{"id":3,"firstName":"Phillip","lastName":"James","age":30,"GPA":82},{"id":4,"firstName":"Christopher","lastName":"Johnson","age":26,"GPA":95},{"id":5,"firstName":"Evelyn","lastName":"Stewart","age":26,"GPA":70}]
+[
+    {
+        "id": 1,
+        "firstName": "Or",
+        "lastName": "Yaakov",
+        "age": 26,
+        "GPA": 97
+    },
+    {
+        "id": 2,
+        "firstName": "Phillip",
+        "lastName": "James",
+        "age": 30,
+        "GPA": 82
+    },
+    {
+        "id": 3,
+        "firstName": "Christopher",
+        "lastName": "Johnson",
+        "age": 29,
+        "GPA": 95
+    },
+    {
+        "id": 4,
+        "firstName": "Evelyn",
+        "lastName": "Stewart",
+        "age": 40,
+        "GPA": 70
+    }
+]
