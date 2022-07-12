@@ -4,9 +4,9 @@ const path = require("path");
 const getStudents = require("./crud/read");
 const deleteStudent = require("./crud/delete");
 
-const htmlDirectory = path.join(__dirname + "/./html");
-const cssDirectory = path.join(__dirname + "/./css");
-const jsDirectory = path.join(__dirname + "/./js");
+const htmlDirectory = path.join(__dirname + "/./client/html");
+const cssDirectory = path.join(__dirname + "/./client/css");
+const jsDirectory = path.join(__dirname + "/./client/js");
 
 const PORT = 3000;
 
