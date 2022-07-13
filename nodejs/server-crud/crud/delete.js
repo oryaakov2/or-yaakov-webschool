@@ -4,20 +4,20 @@ const getStudents = require("./read");
 
 const dataFile = path.join(__dirname + "/../data/students.json");
 
-function deleteStudent() {
+function deleteStudent(studentId) {
     const students = getStudents();
     const studentsJson = JSON.parse(students);
 
-    const deletedStudent = studentsJson.shift();
+    const studentIndex = studentsJson.findIndex(item => item.id === studentId);
 
-    if (deletedStudent) {
+    if (studentIndex > 0) {
+        studentsJson.splice(studentIndex, 1);
         fs.writeFileSync(dataFile, JSON.stringify(studentsJson));
 
-        return JSON.stringify(deletedStudent)
+        return JSON.stringify({ type: "Success", payload: studentId });
     }
-    else {
-        return ""
-    }
+
+    return JSON.stringify({ type: "Error", message: `No such student with id: ${studentId}` });
 }
 
 module.exports = deleteStudent

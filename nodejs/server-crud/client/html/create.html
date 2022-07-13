@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/create.css">
+    <title>Create Student</title>
+</head>
+<body>
+    <main>
+        <h1>Create Page</h1>
+        <ul>
+            <a href="/">Students</a>
+            <a href="/delete">Delete Student</a>
+            <a style="color: #28d428;" href="/create">Create Student</a>
+        </ul>
+
+        <form id="add-student">
+            <h2>Add New Student</h2>
+            <input type="number" name="id" placeholder="id">
+            <input type="text" name="firstName" placeholder="first name">
+            <input type="text" name="lastName" placeholder="last name">
+            <input type="number" name="age" placeholder="age">
+            <input type="number" name="GPA" placeholder="GPA">
+            <button type="submit">add student</button>
+        </form>
+    </main>
+
+    <script src="/js/create.js"></script>
+</body>
+</html>

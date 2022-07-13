@@ -13,9 +13,12 @@
         <ul>
             <a href="/">Students</a>
             <a style="color: #28d428;" href="/delete">Delete</a>
+            <a href="/create">Create Student</a>
         </ul>
-        <p id="delete-message"></p>
-        <button id="delete-btn">delete student</button>
+        <form id="delete-form">
+            <input id="id-input" type="number" placeholder="id">
+            <button type="submit">delete student</button>
+        </form>
     </main>
 
     <script src="/js/delete.js"></script>

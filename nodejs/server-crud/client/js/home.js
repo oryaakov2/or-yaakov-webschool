@@ -3,7 +3,7 @@ const tableBody = document.getElementById("tbody");
 
 fetchBtn.addEventListener("click", async function () {
     try {
-        const response = await fetch("http://localhost:3000/students");
+        const response = await fetch("http://localhost:3000/api/students");
 
         const data = await response.json();
         console.log('data', data)

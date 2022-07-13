@@ -1,38 +1,42 @@
-const deleteBtn = document.getElementById("delete-btn");
-const messageElement = document.getElementById("delete-message");
-let messageTimeout = 0;
+const deleteStudentForm = document.getElementById("delete-form");
+const main = document.querySelector("main");
 
-deleteBtn.addEventListener("click", async function () {
-    try {
-        const response = await fetch("http://localhost:3000/delete-student", {
-            method: "POST"
-        })
+deleteStudentForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-        const responseText = await response.text();
-        if (responseText === "") {
-            alert("no students")
-        }
-        else {
-            const deletedStudent = JSON.parse(responseText);
-            appendMessage(deletedStudent);
-        }
+    const idInput = document.getElementById("id-input");
 
-    } catch (err) {
-        console.error(err);
+    if (!idInput.value) {
+        idInput.focus();
+        return;
     }
+    
+    const id = parseInt(idInput.value);
+
+    fetch("http://localhost:3000/api/delete-student", {
+        method: "POST",
+        body: JSON.stringify({ id })
+    })
+        .then(res => res.json())
+        .then(data => {
+            appendMessage(data);
+            idInput.value = "";
+        }).catch(err => console.log(err))
 })
 
-function appendMessage(deletedStudent) {
-    const { id, firstName, lastName } = deletedStudent
+function appendMessage(data) {
+    const p = document.createElement("p");
 
-    messageElement.innerText = `Student with id: ${id} and name: ${firstName} ${lastName} deleted successfully`;
-
-    if (messageTimeout > 0) {
-        clearTimeout(messageTimeout);
+    if (data.type === "Error") {
+        p.innerText = `${data.message}`;
+        main.append(p);
+    }
+    else {
+        p.innerText = `Student with id: ${data.payload} deleted successfully`;
+        main.append(p);
     }
 
-    messageTimeout = setTimeout(() => {
-        messageElement.innerText = "";
-        messageElement.style.display = "hidden";
-    }, 4000)
+    setTimeout(() => {
+        main.removeChild(p);
+    }, 3000)
 }

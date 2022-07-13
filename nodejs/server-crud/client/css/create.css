@@ -19,6 +19,11 @@ h1 {
     font-size: 2.5rem;
 }
 
+h2, h3, h4 {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
 ul {
     margin: 15px 0;
 }
@@ -34,14 +39,6 @@ a:hover {
     color: rgb(168, 168, 168);
 }
 
-button {
-    padding: 10px;
-}
-
-button:hover {
-    cursor: pointer;
-}
-
 input {
     margin: 15px 0;
     padding: 10px;
@@ -52,6 +49,14 @@ input {
 
 input:focus {
     outline: none;
+}
+
+button {
+    padding: 10px;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 form {
