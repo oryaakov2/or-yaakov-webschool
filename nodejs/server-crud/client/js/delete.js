@@ -10,12 +10,11 @@ deleteStudentForm.addEventListener("submit", function (e) {
         idInput.focus();
         return;
     }
-    
+
     const id = parseInt(idInput.value);
 
     fetch("http://localhost:3000/api/delete-student", {
-        method: "POST",
-        body: JSON.stringify({ id })
+        method: "DELETE", body: JSON.stringify({ id })
     })
         .then(res => res.json())
         .then(data => {

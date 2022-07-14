@@ -8,10 +8,11 @@ function deleteStudent(studentId) {
     const students = getStudents();
     const studentsJson = JSON.parse(students);
 
-    const studentIndex = studentsJson.findIndex(item => item.id === studentId);
+    // check if the new student id already exists.
+    const index = studentsJson.findIndex(item => item.id === studentId);
 
-    if (studentIndex > 0) {
-        studentsJson.splice(studentIndex, 1);
+    if (index > -1) {
+        studentsJson.splice(index, 1);
         fs.writeFileSync(dataFile, JSON.stringify(studentsJson));
 
         return JSON.stringify({ type: "Success", payload: studentId });

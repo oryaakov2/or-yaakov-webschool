@@ -4,6 +4,7 @@ const path = require("path");
 const getStudents = require("./crud/read");
 const deleteStudent = require("./crud/delete");
 const createStudent = require("./crud/create");
+const updateStudent = require("./crud/update");
 
 const htmlDirectory = path.join(__dirname + "/./client/html");
 const cssDirectory = path.join(__dirname + "/./client/css");
@@ -68,6 +69,21 @@ const server = http.createServer(async (req, res) => {
             res.end(createScript);
             break;
 
+        case "/update":
+            const updatePage = fs.readFileSync(htmlDirectory + "/update.html");
+            res.end(updatePage);
+            break;
+
+        case "/css/update.css":
+            const updateStyle = fs.readFileSync(cssDirectory + "/update.css");
+            res.end(updateStyle);
+            break;
+
+        case "/js/update.js":
+            const updateScript = fs.readFileSync(jsDirectory + "/update.js");
+            res.end(updateScript);
+            break;
+
         case "/api/students":
             const students = getStudents();
             res.end(students);
@@ -75,14 +91,14 @@ const server = http.createServer(async (req, res) => {
 
         case "/api/delete-student":
             switch (method) {
-                case "POST":
+                case "DELETE":
                     const buffers = [];
 
                     for await (const chunk of req) {
                         buffers.push(chunk);
                     }
                     const data = JSON.parse(Buffer.concat(buffers).toString());
-                    
+
                     const resObject = deleteStudent(data.id);
                     res.end(resObject);
                     break;
@@ -100,6 +116,22 @@ const server = http.createServer(async (req, res) => {
                     const data = JSON.parse(Buffer.concat(buffers).toString());
 
                     const resObject = createStudent(data);
+                    res.end(resObject);
+                    break;
+            }
+            break;
+
+        case "/api/update-student":
+            switch (method) {
+                case "PUT":
+                    const buffers = [];
+
+                    for await (const chunk of req) {
+                        buffers.push(chunk);
+                    }
+                    const data = JSON.parse(Buffer.concat(buffers).toString());
+
+                    const resObject = updateStudent(data);
                     res.end(resObject);
                     break;
             }

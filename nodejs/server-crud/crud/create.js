@@ -9,9 +9,7 @@ function createStudent(newStudent) {
     const studentsJson = JSON.parse(students);
 
     // check if the new student id already exists.
-    const index = studentsJson.findIndex((item) => {
-        return item.id === newStudent.id;
-    })
+    const index = studentsJson.findIndex(item => item.id === newStudent.id);
 
     if (index < 0) {
         studentsJson.push(newStudent);
