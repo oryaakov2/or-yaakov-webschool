@@ -14,8 +14,6 @@ const PORT = 3000;
 
 const server = http.createServer(async (req, res) => {
     const method = req.method
-    console.log('method', method);
-
     const url = req.url;
 
     switch (url) {
@@ -145,4 +143,4 @@ const server = http.createServer(async (req, res) => {
 })
 
 server.listen(PORT);
-console.log(`server listening on port: 3000`);
+console.log(`server listening on port: ${PORT}`);
