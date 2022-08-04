@@ -19,10 +19,10 @@ function saveUser(newUser) {
 
         fs.writeFileSync(db, JSON.stringify(users))
 
-        return { message: "signup successfully" }
+        return { message: "Signup successfully" }
     }
     else {
-        return { message: "email already exists" }
+        return { message: "Email already exists" }
     }
 }
 
@@ -35,11 +35,29 @@ async function compareUser(credentials) {
         if (user.email === credentials.email) {
             const comparedResult = await bcrypt.compare(credentials.password, user.password)
 
-            return comparedResult;
+            return { result: comparedResult, role: user.role };
         }
     }
 
-    return false
+    return { result: false }
 }
 
-module.exports = { saveUser, compareUser }
+const deleteUserFromDB = (email) => {
+    const users = getUsersFromDB();
+
+    for (let i = 0; i < users.length; i++) {
+        const storedUser = users[i];
+
+        if (storedUser.email === email) {
+            users.splice(i, 1);
+
+            fs.writeFileSync(db, JSON.stringify(users));
+
+            return { message: `User with email: ${email} deleted successfully` }
+        }
+    }
+
+    return { message: `No such user with email: ${email}` }
+}
+
+module.exports = { saveUser, compareUser, deleteUserFromDB }

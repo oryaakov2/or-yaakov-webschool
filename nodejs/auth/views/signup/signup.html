@@ -11,15 +11,20 @@
     <main>
         <nav>
             <ul>
-                <li>
-                    <a href="http://localhost:3000/login">Login</a>
-                </li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/private">Private</a></li>
             </ul>
         </nav>
         <form id="signup-form">
             <h1>Register</h1>
-            <input name="email" type="email" placeholder="email">
-            <input name="password" type="password" placeholder="password">
+            <input name="email" type="email" placeholder="email" required>
+            <input name="password" type="password" placeholder="password" required>
+            <div style="display: flex; flex-direction: row;">
+                <label for="role">admin</label>
+                <input type="radio" name="role" value="admin" checked>
+                <label for="role">guest</label>
+                <input type="radio" name="role" value="guest">
+            </div>
             <button type="submit">Create User</button>
         </form>
     </main>

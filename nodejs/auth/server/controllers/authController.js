@@ -1,20 +1,27 @@
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { saveUser, compareUser } = require("../../utils/dbUtils");
+const { saveUser, compareUser, deleteUserFromDB } = require("../../utils/dbUtils");
 
-const createUser = async (req, res) => {
+const SECRET_KEY = process.env.SECRET_KEY
+
+const login = async (req, res) => {
     const credentials = req.body;
     const results = await compareUser(credentials);
 
-    if (results) {
-        res.cookie("auth", { login: results });
-        res.send(JSON.stringify({ message: results }));
+    if (results.result) {
+        const token = jwt.sign({ email: credentials.email, role: results.role }, SECRET_KEY);
+
+        console.log(token);
+
+        res.cookie("auth", { token });
+        res.send(JSON.stringify({ message: "Logged in successfully" }));
 
         return
     }
-    res.send(JSON.stringify({ message: results }));
+    res.send(JSON.stringify({ message: "Invalid credentials" }));
 }
 
-const validateUser = async (req, res) => {
+const createUser = async (req, res) => {
     const newUser = req.body;
 
     const userPassword = newUser.password;
@@ -26,4 +33,31 @@ const validateUser = async (req, res) => {
     res.send(JSON.stringify(message));
 }
 
-module.exports = { createUser, validateUser }
+const deleteUser = (req, res) => {
+    const email = req.params.email
+    const cookies = req.cookies
+
+    if (cookies.auth) {
+        const token = cookies.auth.token
+
+        try {
+            const decodedToken = jwt.verify(token, SECRET_KEY);
+
+            if (decodedToken.role === "admin") {
+                const message = deleteUserFromDB(email);
+                res.send(JSON.stringify(message));
+                return
+            }
+            else {
+                res.status(403).json({ error: "You have not permissions" });
+                return
+            }
+
+        } catch (err) {
+            console.log(err)
+            res.status(400).json({ error: err.message })
+        }
+    }
+}
+
+module.exports = { login, createUser, deleteUser }
