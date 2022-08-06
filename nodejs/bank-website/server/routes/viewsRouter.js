@@ -1,16 +1,12 @@
 const express = require("express");
-const path = require("path");
-
-const viewsDir = path.join(__dirname, '/../../views');
+const { getHomePage, getLoginPage, getSignupPage } = require("../controllers/viewsController");
 
 const router = express.Router();
 
-router.get('/login', (req, res) => {
-    res.sendFile(viewsDir + '/login/login.html')
-})
+router.get('/', getHomePage)
 
-router.get('/signup', (req, res) => {
-    res.sendFile(viewsDir + '/signup/signup.html')
-})
+router.get('/login', getLoginPage)
+
+router.get('/signup', getSignupPage)
 
 module.exports = router

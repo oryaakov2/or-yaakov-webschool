@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>Bank</title>
+</head>
+<body>
+    <main>
+        <nav id="navbar">
+            <div class="logo">
+                <h1>B - Bank</h1>
+            </div>
+            <ul>
+                <li><a href="/login">Logout</a></li>
+            </ul>
+        </nav>
+
+        <section id="actions">
+            <div class="container">
+                <div class="item">
+                    <p id="quantity-deposit">$0.00</p>
+                    <input id="deposit" type="text" name="deposit">
+                    <button id="deposit-btn">Deposit</button>
+                </div>
+                <div class="item">
+                    <p id="quantity-withdraw">$0.00</p>
+                    <input id="withdraw" type="text" name="withdraw">
+                    <button id="withdraw-btn">Withdraw</button>
+                </div>
+                <div class="item">
+                    <p>What is your father's name?</p>
+                    <input id="delete" type="text" name="delete" required>
+                    <button id="delete-btn">Delete account</button>
+                </div>
+            </div>
+        </section>
+
+        <div id="modal" class="hidden">
+        </div>
+    </main>
+    
+    <script src="home.js"></script>
+</body>
+</html>

@@ -26,6 +26,44 @@ button:hover {
     cursor: pointer;
 }
 
+#navbar {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #fff;
+    width: 100vw;
+    height: 80px;
+    padding: 15px;
+    top: 0;
+    left: 0;
+}
+
+#navbar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+}
+
+#navbar ul li {
+    margin-left: 15px;
+}
+
+a {
+    color: #000;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: background-color 0.1s ease-out;
+    padding: 20px;
+}
+
+a:hover {
+    background-color: #6479d86c;
+    color: #fff;
+}
+
 #signup-form {
     display: flex;
     flex-direction: column;
@@ -51,9 +89,17 @@ button:hover {
 }
 
 #signup-form button {
+    position: relative;
+    left: 25%;
     margin-top: auto;
     padding: 10px;
     font-size: 1.2rem;
     border: none;
     background-color: #f0f8ff;
+    width: 50%;
+}
+
+#signup-form button:hover {
+    cursor: pointer;
+    background-color: #e1effc;
 }
