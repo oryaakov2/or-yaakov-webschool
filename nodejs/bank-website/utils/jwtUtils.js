@@ -22,13 +22,11 @@ const verifyToken = (token) => {
             }
         }
 
-        return { type: 'error', message: 'Authentication required' }
-
     } catch (error) {
         console.log(error.message)
-
-        return { type: 'error', message: 'Authentication required' }
     }
+
+    return { type: 'error', message: 'Authentication required' }
 }
 
 module.exports = { generateToken, verifyToken }
